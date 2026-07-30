@@ -1,0 +1,70 @@
+name: Monitor report
+description: Tell us whether a monitor works — successes are as useful as failures
+title: "[Monitor] "
+labels: ["monitor-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for this. Reports are how the compatibility list gets built, so
+        a monitor that works is just as worth reporting as one that doesn't.
+
+        Please don't include your monitor's serial number.
+  - type: input
+    id: monitor
+    attributes:
+      label: Monitor make and model
+      placeholder: "ASUS ProArt PA27JCV"
+    validations:
+      required: true
+  - type: dropdown
+    id: works
+    attributes:
+      label: Does brightness control work?
+      options:
+        - "Yes — works fully"
+        - "Partly — works but something is off"
+        - "No — the slider shows ≈ and does nothing"
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: How is it connected?
+      options:
+        - USB-C / Thunderbolt
+        - DisplayPort
+        - HDMI
+        - HDMI via an adapter or dongle
+        - Through a dock or hub
+        - Through a KVM
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: dock
+    attributes:
+      label: If it goes through a dock, hub, adapter or KVM, which one?
+      placeholder: "CalDigit TS4 / generic USB-C hub / n.a."
+  - type: input
+    id: mac
+    attributes:
+      label: Mac model and macOS version
+      placeholder: "MacBook Pro M3 Max, macOS 26.1"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What happens?
+      description: >
+        If it half-works, say how. Does it fail only after sleep? Only on one
+        input? Does the monitor's own menu have a DDC/CI setting, and is it on?
+  - type: textarea
+    id: log
+    attributes:
+      label: Relevant lines from the diagnostic log
+      description: >
+        From ~/Library/Logs/Brightness Controller.log — the lines mentioning
+        this monitor around the time of the problem. Optional but very helpful.
+      render: text
